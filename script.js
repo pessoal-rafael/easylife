@@ -515,3 +515,20 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { BusinessTemplate, TemplateCustomizer };
 }
+//Buy Page script de trocar de imagem
+const images = ["image1.jpg", "image2.jpg", "image3.jpg"];
+    let currentIndex = 0;
+
+    const productImage = document.getElementById("product-image");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+
+    prevBtn.addEventListener("click", () => changeImage(-1));
+    nextBtn.addEventListener("click", () => changeImage(1));
+
+    function changeImage(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = images.length - 1;
+      if (currentIndex >= images.length) currentIndex = 0;
+      productImage.src = images[currentIndex];
+    }
